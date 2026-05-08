@@ -1,0 +1,3 @@
+# Harish Kumar Dogra & Co. — Portfolio Website
+
+This repository contains the source code for the official portfolio website of **Harish Kumar Dogra & Co.**, a Chartered Accountancy firm practising from Jayanagar, Bangalore since 1982. The site is a static, single-page website built with vanilla HTML, CSS, and JavaScript — no frameworks or build tools required. It features nine sections covering the firm's history, services (Audit, Taxation, GST, Corporate Law, Advisory, and Bookkeeping), anonymised client case studies, team credentials, and a contact form, with full bilingual support for English and Hindi toggled client-side. The site is hosted on GitHub Pages and is prototype-ready for migration to a custom domain.
