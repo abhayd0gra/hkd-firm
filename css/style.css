@@ -803,6 +803,64 @@ h3 { font-size: clamp(1.1rem, 2vw, 1.35rem); font-weight: 600; }
 }
 
 /* ============================================================
+   TESTIMONIALS
+   ============================================================ */
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+.testi-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(201,168,76,0.2);
+  padding: 2.25rem 2rem 1.75rem;
+  position: relative;
+  transition: border-color 0.3s;
+}
+.testi-card:hover { border-color: rgba(201,168,76,0.5); }
+.testi-quote-mark {
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  line-height: 1;
+  color: var(--gold);
+  opacity: 0.4;
+  position: absolute;
+  top: 1rem; left: 1.5rem;
+}
+.testi-text {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.78);
+  line-height: 1.85;
+  font-style: italic;
+  margin-bottom: 1.75rem;
+  margin-top: 1.5rem;
+}
+.testi-footer { display: flex; align-items: center; gap: 1rem; }
+.testi-avatar {
+  width: 44px; height: 44px;
+  min-width: 44px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--navy-dark);
+}
+.testi-name {
+  font-family: 'Lora', serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 0.15rem;
+}
+.testi-role {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.03em;
+}
+
+/* ============================================================
    ANIMATIONS
    ============================================================ */
 .fade-up {
@@ -829,7 +887,8 @@ h3 { font-size: clamp(1.1rem, 2vw, 1.35rem); font-weight: 600; }
   .team-grid         { grid-template-columns: 1fr; gap: 3rem; }
   .services-grid,
   .why-grid,
-  .cases-grid        { grid-template-columns: repeat(2, 1fr); }
+  .cases-grid,
+  .testi-grid        { grid-template-columns: repeat(2, 1fr); }
   .how-grid          { grid-template-columns: repeat(2, 1fr); }
 }
 
@@ -861,7 +920,8 @@ h3 { font-size: clamp(1.1rem, 2vw, 1.35rem); font-weight: 600; }
 
   .services-grid,
   .why-grid,
-  .cases-grid     { grid-template-columns: 1fr; }
+  .cases-grid,
+  .testi-grid     { grid-template-columns: 1fr; }
   .how-grid       { grid-template-columns: repeat(2, 1fr); }
   .contact-grid   { grid-template-columns: 1fr; gap: 2.5rem; }
   .footer-inner   { grid-template-columns: 1fr; gap: 2rem; }
