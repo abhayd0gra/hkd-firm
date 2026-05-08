@@ -129,6 +129,7 @@ const T = {
     'contact.hoursText':  'Monday to Saturday, 10:00 AM – 6:00 PM',
     'form.title':         'Send Us a Message',
     'form.name':          'Full Name',
+    'form.email':         'Email Address',
     'form.company':       'Company / Organisation',
     'form.phone':         'Phone Number',
     'form.service':       'Service Required',
@@ -278,6 +279,7 @@ const T = {
     'contact.hoursText':  'सोमवार से शनिवार, सुबह 10:00 – शाम 6:00',
     'form.title':         'हमें संदेश भेजें',
     'form.name':          'पूरा नाम',
+    'form.email':         'ईमेल पता',
     'form.company':       'कंपनी / संगठन',
     'form.phone':         'फोन नंबर',
     'form.service':       'सेवा की आवश्यकता',
@@ -369,33 +371,4 @@ document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 /* ---- Apply saved language on load ---- */
 applyLang(lang);
 
-/* ---- Formspree AJAX submission ---- */
-const contactForm = document.getElementById('contact-form');
-const formSuccess = document.getElementById('form-success');
-if (contactForm) {
-  contactForm.addEventListener('submit', async function (e) {
-    e.preventDefault();
-    const btn = contactForm.querySelector('.form-submit');
-    btn.disabled = true;
-    btn.textContent = '…';
-    try {
-      const res = await fetch(contactForm.action, {
-        method: 'POST',
-        body: new FormData(contactForm),
-        headers: { 'Accept': 'application/json' }
-      });
-      if (res.ok) {
-        contactForm.reset();
-        formSuccess.classList.add('visible');
-      } else {
-        btn.disabled = false;
-        btn.textContent = T[lang]['form.submit'] || 'Send Message';
-        alert('There was a problem submitting the form. Please email us directly.');
-      }
-    } catch {
-      btn.disabled = false;
-      btn.textContent = T[lang]['form.submit'] || 'Send Message';
-      alert('Network error. Please email harishkumardogra@gmail.com directly.');
-    }
-  });
-}
+/* Formspree submission handled by @formspree/ajax CDN — see bottom of index.html */

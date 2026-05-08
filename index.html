@@ -593,27 +593,39 @@
           </div>
         </div>
 
-        <!-- Contact form (Formspree — replace YOUR_FORM_ID after signing up at formspree.io) -->
+        <!-- Contact form — Formspree Vanilla JS (Ajax) -->
         <div class="contact-form-wrap">
           <h3 data-i18n="form.title">Send Us a Message</h3>
-          <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-            <input type="hidden" name="_subject" value="New enquiry — Harish Kumar Dogra & Co.">
-            <input type="hidden" name="_replyto" value="">
+
+          <!-- Success message (shown by Formspree after submission) -->
+          <div data-fs-success class="fs-success-msg" data-i18n="form.success">
+            Thank you — we will be in touch shortly.
+          </div>
+          <!-- Form-level error message -->
+          <div data-fs-error class="fs-error-msg"></div>
+
+          <form id="contact-form">
             <div class="form-row">
               <label data-i18n="form.name">Full Name</label>
-              <input type="text" name="name" placeholder="Your full name" required>
+              <input type="text" name="name" placeholder="Your full name" data-fs-field required>
+              <span data-fs-error="name" class="fs-field-error"></span>
+            </div>
+            <div class="form-row">
+              <label data-i18n="form.email">Email Address</label>
+              <input type="email" name="email" placeholder="your@email.com" data-fs-field required>
+              <span data-fs-error="email" class="fs-field-error"></span>
             </div>
             <div class="form-row">
               <label data-i18n="form.company">Company / Organisation</label>
-              <input type="text" name="company" placeholder="Your company or organisation">
+              <input type="text" name="company" placeholder="Your company or organisation" data-fs-field>
             </div>
             <div class="form-row">
               <label data-i18n="form.phone">Phone Number</label>
-              <input type="tel" name="phone" placeholder="+91 …">
+              <input type="tel" name="phone" placeholder="+91 …" data-fs-field>
             </div>
             <div class="form-row">
               <label data-i18n="form.service">Service Required</label>
-              <select name="service">
+              <select name="service" data-fs-field>
                 <option value="" data-i18n="form.serviceDefault">— Select a service —</option>
                 <option data-i18n="s1.title">Audit &amp; Assurance</option>
                 <option data-i18n="s2.title">Direct Taxation</option>
@@ -625,10 +637,10 @@
             </div>
             <div class="form-row">
               <label data-i18n="form.message">Message</label>
-              <textarea name="message" placeholder="Briefly describe your requirement…"></textarea>
+              <textarea name="message" placeholder="Briefly describe your requirement…" data-fs-field></textarea>
+              <span data-fs-error="message" class="fs-field-error"></span>
             </div>
-            <button type="submit" class="form-submit" data-i18n="form.submit">Send Message</button>
-            <p class="form-success" id="form-success" data-i18n="form.success">Thank you — we will be in touch shortly.</p>
+            <button type="submit" class="form-submit" data-fs-submit-btn data-i18n="form.submit">Send Message</button>
           </form>
         </div>
       </div>
@@ -688,6 +700,13 @@
   </a>
 
   <script src="js/main.js"></script>
+
+  <!-- Formspree Ajax SDK -->
+  <script>
+    window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+    formspree('initForm', { formElement: '#contact-form', formId: 'mgodnyzy' });
+  </script>
+  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 </body>
 
 </html>
