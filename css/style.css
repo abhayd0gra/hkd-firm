@@ -821,14 +821,22 @@ h3 { font-size: clamp(1.1rem, 2vw, 1.35rem); font-weight: 600; }
    RESPONSIVE
    ============================================================ */
 @media (max-width: 1100px) {
-  .hero-inner     { grid-template-columns: 1fr; }
-  .hero-photo-wrap { display: none; }
+  .hero-inner        { grid-template-columns: 1fr; }
+  .hero-photo-wrap   { justify-content: center; margin-top: 2.5rem; }
+  .hero-photo-frame  { width: 300px; }
+  .hero-photo-frame img { height: 360px; }
   .about-grid,
-  .team-grid      { grid-template-columns: 1fr; gap: 3rem; }
+  .team-grid         { grid-template-columns: 1fr; gap: 3rem; }
   .services-grid,
   .why-grid,
-  .cases-grid     { grid-template-columns: repeat(2, 1fr); }
-  .how-grid       { grid-template-columns: repeat(2, 1fr); }
+  .cases-grid        { grid-template-columns: repeat(2, 1fr); }
+  .how-grid          { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .hero-photo-frame  { width: 260px; }
+  .hero-photo-frame img { height: 310px; }
+  .hero-name-plate strong { font-size: 0.875rem; }
 }
 
 @media (max-width: 768px) {
