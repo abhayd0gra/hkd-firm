@@ -135,6 +135,7 @@ const T = {
     'form.serviceDefault':'— Select a service —',
     'form.message':       'Message',
     'form.submit':        'Send Message',
+    'form.success':       'Thank you — we will be in touch shortly.',
 
     'testi.label':   'Client Testimonials',
     'testi.title':   'What Our Clients Say',
@@ -283,6 +284,7 @@ const T = {
     'form.serviceDefault':'— सेवा चुनें —',
     'form.message':       'संदेश',
     'form.submit':        'संदेश भेजें',
+    'form.success':       'धन्यवाद — हम शीघ्र ही आपसे संपर्क करेंगे।',
 
     'testi.label':   'ग्राहक प्रशंसापत्र',
     'testi.title':   'हमारे ग्राहक क्या कहते हैं',
@@ -366,3 +368,34 @@ document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
 /* ---- Apply saved language on load ---- */
 applyLang(lang);
+
+/* ---- Formspree AJAX submission ---- */
+const contactForm = document.getElementById('contact-form');
+const formSuccess = document.getElementById('form-success');
+if (contactForm) {
+  contactForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const btn = contactForm.querySelector('.form-submit');
+    btn.disabled = true;
+    btn.textContent = '…';
+    try {
+      const res = await fetch(contactForm.action, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        contactForm.reset();
+        formSuccess.classList.add('visible');
+      } else {
+        btn.disabled = false;
+        btn.textContent = T[lang]['form.submit'] || 'Send Message';
+        alert('There was a problem submitting the form. Please email us directly.');
+      }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = T[lang]['form.submit'] || 'Send Message';
+      alert('Network error. Please email harishkumardogra@gmail.com directly.');
+    }
+  });
+}

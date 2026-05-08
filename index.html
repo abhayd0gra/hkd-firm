@@ -581,12 +581,24 @@
               <p data-i18n="contact.hoursText">Monday to Saturday, 10:00 AM – 6:00 PM</p>
             </div>
           </div>
+          <!-- Google Maps embed -->
+          <div class="contact-map">
+            <iframe
+              src="https://maps.google.com/maps?q=384+17th+Main+4th+T+Block+Jayanagar+Bangalore+560041+India&output=embed"
+              title="Harish Kumar Dogra & Co. — Office Location"
+              loading="lazy"
+              allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
         </div>
 
-        <!-- Contact form -->
+        <!-- Contact form (Formspree — replace YOUR_FORM_ID after signing up at formspree.io) -->
         <div class="contact-form-wrap">
           <h3 data-i18n="form.title">Send Us a Message</h3>
-          <form action="mailto:harishkumardogra@gmail.com" method="GET" enctype="text/plain">
+          <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <input type="hidden" name="_subject" value="New enquiry — Harish Kumar Dogra & Co.">
+            <input type="hidden" name="_replyto" value="">
             <div class="form-row">
               <label data-i18n="form.name">Full Name</label>
               <input type="text" name="name" placeholder="Your full name" required>
@@ -613,9 +625,10 @@
             </div>
             <div class="form-row">
               <label data-i18n="form.message">Message</label>
-              <textarea name="body" placeholder="Briefly describe your requirement…"></textarea>
+              <textarea name="message" placeholder="Briefly describe your requirement…"></textarea>
             </div>
             <button type="submit" class="form-submit" data-i18n="form.submit">Send Message</button>
+            <p class="form-success" id="form-success" data-i18n="form.success">Thank you — we will be in touch shortly.</p>
           </form>
         </div>
       </div>
@@ -658,9 +671,21 @@
     </div>
     <div class="footer-bottom">
       <p data-i18n="footer.copy">© 2026 Harish Kumar Dogra &amp; Co. All rights reserved.</p>
-      <p data-i18n="footer.icai">Registered with the Institute of Chartered Accountants of India (ICAI).</p>
+      <div class="footer-bottom-right">
+        <p data-i18n="footer.icai">Registered with the Institute of Chartered Accountants of India (ICAI).</p>
+        <p class="footer-reg">ICAI Firm Reg. No.: <span id="icai-reg-no">[Update with Firm Registration Number]</span></p>
+      </div>
     </div>
   </footer>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/919845031259?text=Hello%2C%20I%20would%20like%20to%20enquire%20about%20your%20services."
+     class="whatsapp-float"
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="Chat on WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
 
   <script src="js/main.js"></script>
 </body>
